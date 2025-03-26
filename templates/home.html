@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>{{ 'Welcome to Krishi Mitra' if language == 'english' else 'कृषि मित्र में आपका स्वागत है' }}</h1>
+    <p>{{ 'Helping farmers with weather prediction and loan calculation.' if language == 'english' else 'किसानों की मदद के लिए मौसम पूर्वानुमान और ऋण गणना।' }}</p>
+    <button onclick="location.href='/weather'">{{ 'Weather Prediction' if language == 'english' else 'मौसम पूर्वानुमान' }}</button>
+    <button onclick="location.href='/loan'">{{ 'Loan Calculator' if language == 'english' else 'ऋण कैलकुलेटर' }}</button>
+</body>
+</html>
