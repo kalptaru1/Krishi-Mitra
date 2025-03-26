@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krishi Mitra - Your Farming Companion</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap');
+
+        body {
+            text-align: center;
+            font-family: 'Raleway', sans-serif;
+            background-color: #f9f5f0;
+            margin: 0;
+            padding: 0;
+            color: #4a3728;
+        }
+
+        header {
+            background-color: #6b8e23; /* Olive green */
+            color: white;
+            padding: 40px 0;
+            font-size: 36px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        nav {
+            margin-top: 20px;
+        }
+
+        .nav-button {
+            background-color: #ffb347;
+            color: white;
+            padding: 15px 30px;
+            margin: 10px;
+            border: none;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background-color: #ffa000;
+        }
+
+        #main-content {
+            padding: 40px;
+        }
+
+        .banner-image {
+            width: 80%;
+            border-radius: 12px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        #features {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            padding: 50px;
+        }
+
+        .feature-box {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 350px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .feature-box img {
+            width: 90px;
+            margin-bottom: 15px;
+        }
+
+        .feature-box h2 {
+            font-size: 24px;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 10px;
+        }
+
+        .feature-button {
+            background-color: #5bc0de; /* Light blue */
+            color: white;
+            padding: 15px 25px;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .feature-button:hover {
+            background-color: #31b0d5; /* Darker blue on hover */
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            margin-top: 30px;
+            font-size: 16px;
+            font-weight: 400;
+            font-family: 'Raleway', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Krishi Mitra - Your Farming Companion</h1>
+    </header>
+
+    <section id="main-content">
+        <img src="https://t4.ftcdn.net/jpg/02/43/52/57/360_F_243525780_r8sdu06FUxVmqvf3YUthU5s9nE0z0lhh.jpg" alt="Beautiful Farm Landscape" class="banner-image">
+        <p style="font-size: 18px;"><strong>Cultivate Success with AI-Powered Insights</strong></p>
+    </section>
+
+    <section id="features">
+        <div class="feature-box">
+            <img src="https://cdn.iconscout.com/icon/free/png-512/free-ios-weather-icon-download-in-svg-png-gif-file-formats--11-pack-user-interface-icons-461610.png?f=webp&w=512" alt="Weather Icon">
+            <h2>Weather Wisdom</h2>
+            <p>Plan your crops with precision using our accurate 30-day weather forecasts.</p>
+            <button class="feature-button" onclick="window.location.href='/weather'">Explore Forecasts</button>
+        </div>
+        <div class="feature-box">
+            <img src="https://cdn-icons-png.flaticon.com/512/6342/6342151.png" alt="Loan Icon">
+            <h2>Financial Flourish</h2>
+            <p>Calculate your potential loan amount based on yield and land area.</p>
+            <button class="feature-button" onclick="window.location.href='/loan'">Estimate Support</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Krishi Mitra | Growing Futures Together</p>
+    </footer>
+
+    <script>
+        //JavaScript can be added here
+    </script>
+</body>
+</html>
