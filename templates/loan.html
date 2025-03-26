@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer's Crop Support Estimator</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #f9f5f0;
+            margin: 0;
+            padding: 20px;
+            color: #4a3728;
+            background-image: url('https://images.pexels.com/photos/1334312/pexels-photo-1334312.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        h1 {
+            color: #6b8e23;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #b8860b;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #556b2f;
+            font-weight: bold;
+        }
+
+        input[type="number"], select {
+            width: calc(100% - 22px);
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #d2b48c;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #8fbc8f;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        #loanAmount {
+            margin-top: 25px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #d2b48c;
+            font-size: 16px;
+            line-height: 1.6;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #loanAmount strong {
+            color: #6b8e23;
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 25px;
+            border-radius: 12px;
+            border: 3px double #d2b48c;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            max-width: 500px;
+            margin: 20px auto;
+        }
+
+        .result-item {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <h1>Crop Support Estimator</h1>
+    <form id="loanForm">
+        <label for="land_area">Field Size (Hectares):</label>
+        <input type="number" id="land_area" name="land_area" required>
+
+        <label for="crop_type">Crop to Cultivate:</label>
+        <select id="crop_type" name="crop_type">
+            <option value="wheat">Golden Wheat</option>
+            <option value="rice">Paddy Fields Rice</option>
+            <option value="maize">Sunlit Maize</option>
+            <option value="sugarcane">Sweet Sugarcane</option>
+        </select>
+
+        <button type="submit">Estimate Crop Support</button>
+    </form>
+    <div id="loanAmount"></div>
+
+    <script>
+        document.getElementById('loanForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            let formData = new FormData(this);
+            document.getElementById('loanAmount').innerHTML = "<p>Calculating the harvest's potential...</p>";
+
+            try {
+                const response = await fetch('/calculate_loan', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error(`The soil's data is unclear: ${response.status}`);
+                }
+
+                const data = await response.json();
+
+                if (data.error) {
+                    document.getElementById('loanAmount').innerHTML = `<p>Error: ${data.error}</p>`;
+                } else {
+                    document.getElementById('loanAmount').innerHTML = `
+                        <div class="result-item"><strong>Estimated Harvest:</strong> ${data.yield} kg</div>
+                        <div class="result-item"><strong>Estimated Market Value:</strong> ₹${data.income.toFixed(2)}</div>
+                        <div class="result-item"><strong>Estimated Financial Support:</strong> ₹${data.loan.toFixed(2)}</div>
+                    `;
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                document.getElementById('loanAmount').innerHTML = "<p>An unexpected season's change occurred. Please try again.</p>";
+            }
+        });
+    </script>
+</body>
+</html>
